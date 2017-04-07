@@ -11,11 +11,11 @@
 
 			<?php foreach ($patient as $patients) {  ?>
 			<tr>
-				<td><?= $patients['name'];?></td>
-			 	<td><?= $patients['species'];?></td>
-				<td><?= $patients['status'];?></td>
-				<td> <a href="<?= URL ?>patient/deletePatient/<?= $patients['id'];?>">Delete</a> 
-				<a href="<?= URL ?>patient/readPatient/<?= $patients['id'];?>">Delete</a></td>
+				<td class="bottom"><?= $patients['name'];?></td>
+			 	<td class="bottom"><?= $patients['species'];?></td>
+				<td class="bottom"><?= $patients['status'];?></td>
+				<td class="bottom"> <a href="<?= URL ?>patient/deletePatient/<?= $patients['id'];?>">Delete</a> /  
+				<a href="<?= URL ?>patient/readPatient/<?= $patients['id'];?>">info</a></td>
 			</tr>
 			<?php } ?>
 			 <a href='<?= URL ?>patient/create'><button>Add patient</button></a>

@@ -59,6 +59,20 @@ function delete($id) {
 
 }
 
-function read() {
+function getPatient($id) {
+	if (!$id) {
+		return false;
+	}
+	$db = openDatabaseConnection();
+
+	$sql = "SELECT * FROM patient WHERE id =:id";
+	$query = $db->prepare($sql);
+	$query->execute(array(":id"=>$id));
+
+	$db = null;
+
+	return $query->fetch();
+	return true;
+
 	
 }

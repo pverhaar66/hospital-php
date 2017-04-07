@@ -40,11 +40,6 @@ function deletePatient($id)
 
 function readPatient($id)
 {
-		if (!read($id)) {
-		 		header("Location:" . URL . "error/index");
-	 		exit();
- 	}
-
-			render("patient/readPatient");
+	render("patient/readPatient" ,array('patient' => getPatient($id)));
 
 }

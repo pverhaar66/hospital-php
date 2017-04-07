@@ -3,14 +3,16 @@ body
 	background-color: white;
 	
 }
-td:nth-child(even) {
-	background-color: yellow;
+.bottom {
 	border:solid black 3px;
 }
 
-td:nth-child(odd) {
-	background-color: grey;
-	border:solid black 3px;
+tr:nth-child(even){
+	background-color: pink;
+}
+
+tr:nth-child(odd){
+	background-color: lightblue;
 }
 
 .top {
