@@ -13,6 +13,24 @@ function getAllPatients() {
 
 }
 
+function getPatient($id) {
+	if (!$id) {
+		return false;
+	}
+	$db = openDatabaseConnection();
+
+	$sql = "SELECT * FROM patient WHERE id =:id";
+	$query = $db->prepare($sql);
+	$query->execute(array(":id"=>$id));
+
+	$db = null;
+
+	return $query->fetch();
+	return true;
+
+	
+}
+
 
 function createPatient() {
 
@@ -40,6 +58,34 @@ function createPatient() {
 
 
 }
+function editThisPatient(){
+
+	$name = isset($_POST["name"]) ? $_POST['name'] : null;
+	$species = isset($_POST["specie"]) ? $_POST['specie'] : null;
+	$status = isset($_POST["status"])? $_POST['status'] : null;
+	$id = isset($_POST["id"])? $_POST['id'] : null;	
+
+
+	if (strlen($name) < 3 || strlen($species) == 0 || strlen($status) == 0) {
+		return false;	
+	}
+
+
+	$db = openDatabaseConnection();
+
+	$sql = "UPDATE patient SET name = :name, species = :species, status = :status  WHERE id=:id";
+	
+	$stmt = $db->prepare($sql);
+	$stmt->execute(array(
+					":name" => $name,
+					":species" => $species,	
+					":status" => $status,	
+					":id" => $id));
+
+	$db = null;
+
+	return true;
+}
 
 function delete($id) {
 
@@ -59,20 +105,3 @@ function delete($id) {
 
 }
 
-function getPatient($id) {
-	if (!$id) {
-		return false;
-	}
-	$db = openDatabaseConnection();
-
-	$sql = "SELECT * FROM patient WHERE id =:id";
-	$query = $db->prepare($sql);
-	$query->execute(array(":id"=>$id));
-
-	$db = null;
-
-	return $query->fetch();
-	return true;
-
-	
-}

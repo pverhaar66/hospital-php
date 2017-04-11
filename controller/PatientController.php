@@ -43,3 +43,19 @@ function readPatient($id)
 	render("patient/readPatient" ,array('patient' => getPatient($id)));
 
 }
+
+function editPatient($id)
+{
+	render("patient/editPatient", array('patient' => getPatient($id)));
+}
+
+function editSave() {
+
+	 	if (!editThisPatient()) {
+
+	 		header("Location:" . URL . "error/index");
+	 		exit();
+ 	}
+
+ 		header("Location:" . URL . "patient/index");
+}

@@ -1,6 +1,6 @@
 body
 {
-	background-color: white;
+	background-color: aliceblue;
 	
 }
 .bottom {
@@ -23,8 +23,8 @@ tr:nth-child(odd){
 
 table {
 	position: absolute;
-	right: 100px;
-	top: 50px;
+	right: 300px;
+	top: 100px;
 	height: 300px;
 	width:1200px;
 	text-align: center;
@@ -64,4 +64,11 @@ input{
 
 }
 
+#addbutton {
+	position: absolute;
+	top: 100px;
+	left: 700px;
+	height: 40px;
+	width: 120px;
 
+}
