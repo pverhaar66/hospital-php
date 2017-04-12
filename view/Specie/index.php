@@ -3,25 +3,26 @@
 	<table>
 
 			<tr>
-				<td class="top">Client_name</td>
-				<td class="top">Client_phone</td>
-				<td class="top">Client_e-mail</td>
-				<td class="top">options</td>
+				<td class="top">Speice_name</td>
+				<td class="top" colspan="3">options</td>
 			</tr>
 
-			<?php foreach ($clients as $client) {  ?>
+			<?php foreach ($species as $specie) {  ?>
 			<tr>
-				<td class="bottom"><?= $client['client_name'];?></td>
-			 	<td class="bottom"><?= $client['client_phone'];?></td>
-				<td class="bottom"><?= $client['client_email'];?></td>
-				<td class="bottom"> <a href="<?= URL ?>client/readclient/<?= $client['client_id'];?>">Info</a> / 
-									<a href="<?= URL ?>client/editclient/<?= $client['client_id'];?>">Edit</a> / 
-									<a href="<?= URL ?>client/deleteclient/<?= $client['client_id'];?>">Delete</a></td>
-
+				<td class="bottom"><?= $specie['specie_name'];?></td>
+				<td class="bottom"><a href="<?= URL ?>specie/readspecie/<?= $specie['specie_id'];?>"><button class="indexbutton">Info</button></a></td>
+				<td class="bottom"><a href="<?= URL ?>specie/editspecie/<?= $specie['specie_id'];?>"><button class="indexbutton">Edit</button></a></td>
+				<td class="bottom"><a href="<?= URL ?>specie/deletespecie/<?= $specie['specie_id'];?>"><button class="indexbutton">Delete</button></a></td>
 			</tr>
 			<?php } ?>
-			 <a href='<?= URL ?>client/create'><button id="addbutton">Add Client</button></a>
-		</table>		
+			 <a href='<?= URL ?>specie/create'><button id="addbutton">Add specie</button></a>
+
+		</table>	
+
+		 <aside>
+		 <a href='<?= URL ?>client/index'><button class="navbutton">Go to clients</button></a>
+		 <a href='<?= URL ?>patient/index'><button class="navbutton">Go to patients</button></a>
+		 </aside>	
 </main>
 
 

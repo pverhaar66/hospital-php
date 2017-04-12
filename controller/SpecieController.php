@@ -1,61 +1,61 @@
 <?php
 
-require(ROOT . "model/ClientModel.php");
+require(ROOT . "model/SpecieModel.php");
 
 function index()
 {
-	render("client/Index", 
-		array("clients" => getAllClients()));
+	render("specie/index", 
+		array("species" => getAllSpecies()));
 }
 
 function create()
 {
-	render("client/createclient");
+	render("specie/createSpecie");
 	
 }
 
 function createSave()
 {
 
- 	if (!createClient()) {
+ 	if (!createSpecie()) {
 
 	 		header("Location:" . URL . "error/index");
 	 		exit();
  	}
 
- 		header("Location:" . URL . "client/index");
+ 		header("Location:" . URL . "specie/index");
 }
 
 
-function deleteClient($id)
+function deleteSpecie($id)
 {
 	if (!delete($id)) {
 		 		header("Location:" . URL . "error/index");
 	 		exit();
  	}
 
- 		header("Location:" . URL . "client/index");
+ 		header("Location:" . URL . "specie/index");
 	
 }
 
-function readClient($id)
+function readSpecie($id)
 {
-	render("client/readclient" ,array('client' => getClient($id)));
+	render("specie/readSpecie" ,array('specie' => getSpecie($id)));
 
 }
 
-function editClient($id)
+function editSpecie($id)
 {
-	render("client/editclient", array('client' => getClient($id)));
+	render("specie/editSpecie", array('specie' => getSpecie($id)));
 }
 
 function editSave() {
 
-	 	if (!editThisClient()) {
+	 	if (!editThisSpecie()) {
 
 	 		header("Location:" . URL . "error/index");
 	 		exit();
  	}
 
- 		header("Location:" . URL . "client/index");
+ 		header("Location:" . URL . "specie/index");
 }

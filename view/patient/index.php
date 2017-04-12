@@ -21,7 +21,13 @@
 			</tr>
 			<?php } ?>
 			 <a href='<?= URL ?>patient/create'><button id="addbutton">Add patient</button></a>
+
 		</table>		
+
+		 <aside>
+		 <a href='<?= URL ?>client/index'><button class="navbutton">Go to clients</button></a>
+		 <a href='<?= URL ?>specie/index'><button class="navbutton">Go to species</button></a>
+		 </aside>
 </main>
 
 
