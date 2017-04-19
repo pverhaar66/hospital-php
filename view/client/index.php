@@ -3,20 +3,18 @@
 	<table>
 
 			<tr>
-				<td class="top">Client_name</td>
-				<td class="top">Client_phone</td>
-				<td class="top">Client_e-mail</td>
-				<td class="top">options</td>
+				<td class="top">Client_firstname</td>
+				<td class="top">Client_lastname</td>
+				<td class="top" colspan="3">options</td>
 			</tr>
 
 			<?php foreach ($clients as $client) {  ?>
 			<tr>
-				<td class="bottom"><?= $client['client_name'];?></td>
-			 	<td class="bottom"><?= $client['client_phone'];?></td>
-				<td class="bottom"><?= $client['client_email'];?></td>
-				<td class="bottom"> <a href="<?= URL ?>client/readclient/<?= $client['client_id'];?>">Info</a> / 
-									<a href="<?= URL ?>client/editclient/<?= $client['client_id'];?>">Edit</a> / 
-									<a href="<?= URL ?>client/deleteclient/<?= $client['client_id'];?>">Delete</a></td>
+				<td class="bottom"><?= $client['client_firstname'];?></td>
+			 	<td class="bottom"><?= $client['client_lastname'];?></td>
+				<td class="bottom"> <a href="<?= URL ?>client/readclient/<?= $client['client_id'];?>"><button class="indexbutton">Info</button></a> </td>
+				<td class="bottom">	<a href="<?= URL ?>client/editclient/<?= $client['client_id'];?>"><button class="indexbutton">Edit</button></a> </td>
+				<td class="bottom">	<a href="<?= URL ?>client/deleteclient/<?= $client['client_id'];?>"><button class="indexbutton">Delete</button></a></td>
 
 			</tr>
 			<?php } ?>

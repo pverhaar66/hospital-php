@@ -35,22 +35,21 @@ function getClient($id) {
 function createClient() {
 
 
-	$name = isset($_POST["name"]) ? $_POST['name'] : null;
-	$phone = isset($_POST["phone"]) ? $_POST['phone'] : null;
-	$email = isset($_POST["email"])? $_POST['email'] : null;
+	$client_firstname = isset($_POST["client_firstname"]) ? $_POST['client_firstname'] : null;
+	$client_lastname = isset($_POST["client_lastname"]) ? $_POST['client_lastname'] : null;
 
-	if (strlen($name) < 3 || strlen($phone) == 0 || strlen($email) == 0) {
+
+	if (strlen($client_firstname) == 0 || strlen($client_lastname) == 0) {
 		return false;	
 	}
 
 	$db = openDatabaseConnection();
 
-	$sql = "INSERT INTO clients(client_name, client_phone, client_email) VALUES(:client_name, :client_phone, :client_email)";
+	$sql = "INSERT INTO clients(client_firstname, client_lastname) VALUES(:client_firstname, :client_lastname)";
 
 	$query = $db -> prepare($sql);
-	$query -> execute(array(':client_name' => $name,
-						 	':client_phone' => $phone,
-						  	':client_email' => $email));
+	$query -> execute(array(':client_firstname' => $client_firstname,
+						 	':client_lastname' => $client_lastname));
 
 	$db = null;
 
@@ -60,26 +59,23 @@ function createClient() {
 }
 function editThisClient(){
 
-	$name = isset($_POST["name"]) ? $_POST['name'] : null;
-	$phone = isset($_POST["phone"]) ? $_POST['phone'] : null;
-	$email = isset($_POST["email"])? $_POST['email'] : null;
-	$id = isset($_POST["id"])? $_POST['id'] : null;	
+	$client_firstname = isset($_POST["client_firstname"]) ? $_POST['client_firstname'] : null;
+	$client_lastname = isset($_POST["client_lastname"]) ? $_POST['client_lastname'] : null;
+	$client_id = isset($_POST["client_id"])? $_POST['client_id'] : null;	
 
-	if (strlen($name) < 3 || strlen($phone) == 0 || strlen($email) == 0) {
+	if (strlen($client_firstname) == 0 || strlen($client_lastname) == 0) {
 		return false;	
 	}
 
-
 	$db = openDatabaseConnection();
 
-	$sql = "UPDATE clients SET client_name = :client_name, client_phone = :client_phone, client_email = :client_email  WHERE client_id=:client_id";
+	$sql = "UPDATE clients SET client_firstname = :client_firstname, client_lastname = :client_lastname WHERE client_id = :client_id";
 	
 	$stmt = $db->prepare($sql);
 	$stmt->execute(array(
-					":client_name" => $name,
-					":client_phone" => $phone,	
-					":client_email" => $email,	
-					":client_id" => $id));
+					":client_firstname" => $client_firstname,
+					":client_lastname" => $client_lastname,		
+					":client_id" => $client_id));
 
 	$db = null;
 
@@ -94,7 +90,7 @@ function delete($id) {
 	$db = openDatabaseConnection();
 	
 
-	$sql = "DELETE FROM clients WHERE client_id=:client_id";
+	$sql = "DELETE FROM clients WHERE client_id = :client_id";
 	$stmt = $db->prepare($sql);
 	$stmt->execute(array(":client_id"=>$id));
 

@@ -3,7 +3,7 @@
 function getAllPatients() {
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT * FROM patient";
+	$sql = "SELECT * FROM patients";
 	$query = $db->prepare($sql);
 	$query->execute();
 
@@ -19,9 +19,9 @@ function getPatient($id) {
 	}
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT * FROM patient WHERE id =:id";
+	$sql = "SELECT * FROM patients WHERE patient_id =:patient_id";
 	$query = $db->prepare($sql);
-	$query->execute(array(":id"=>$id));
+	$query->execute(array(":patient_id"=>$id));
 
 	$db = null;
 
@@ -35,22 +35,25 @@ function getPatient($id) {
 function createPatient() {
 
 
-	$name = isset($_POST["name"]) ? $_POST['name'] : null;
-	$species = isset($_POST["specie"]) ? $_POST['specie'] : null;
-	$status = isset($_POST["status"])? $_POST['status'] : null;
+	$patient_name = isset($_POST["patient_name"]) ? $_POST['patient_name'] : null;
+	$species_id = isset($_POST["specie_id"]) ? $_POST['specie_id'] : null;
+	$client_id = isset($_POST["client_id"]) ? $_POST['client_id'] : null;
+	$patient_status = isset($_POST["patient_status"])? $_POST['patient_status'] : null;
 
-	if (strlen($name) < 3 || strlen($species) == 0 || strlen($status) == 0) {
+	if (strlen($patient_name) == 0 || strlen($patient_status) == 0) {
 		return false;	
 	}
 
+
 	$db = openDatabaseConnection();
 
-	$sql = "INSERT INTO patient(name, species, status) VALUES(:name, :species, :status)";
+	$sql = "INSERT INTO patients(patient_name, species_id, client_id, patient_status) VALUES(:patient_name, :species_id, :client_id, :patient_status)";
 
 	$query = $db -> prepare($sql);
-	$query -> execute(array(':name' => $name,
-						 	':species' => $species,
-						  	':status' => $status));
+	$query -> execute(array(':patient_name' => $patient_name,
+						 	':species_id' => $species_id,
+						 	':client_id' => $client_id,
+						  	':patient_status' => $patient_status));
 
 	$db = null;
 
@@ -73,7 +76,7 @@ function editThisPatient(){
 
 	$db = openDatabaseConnection();
 
-	$sql = "UPDATE patient SET name = :name, species = :species, status = :status  WHERE id=:id";
+	$sql = "UPDATE patients SET name = :name, species = :species, status = :status  WHERE id=:id";
 	
 	$stmt = $db->prepare($sql);
 	$stmt->execute(array(
@@ -87,7 +90,7 @@ function editThisPatient(){
 	return true;
 }
 
-function delete($id) {
+function deletePatients($id) {
 
 	if (!$id) {
 		return false;
@@ -95,7 +98,7 @@ function delete($id) {
 	$db = openDatabaseConnection();
 	
 
-	$sql = "DELETE FROM patient WHERE id=:id";
+	$sql = "DELETE FROM patients WHERE id=:id";
 	$stmt = $db->prepare($sql);
 	$stmt->execute(array(":id"=>$id));
 

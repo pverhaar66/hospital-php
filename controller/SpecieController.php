@@ -29,7 +29,7 @@ function createSave()
 
 function deleteSpecie($id)
 {
-	if (!delete($id)) {
+	if (!deleteSpecies($id)) {
 		 		header("Location:" . URL . "error/index");
 	 		exit();
  	}

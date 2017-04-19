@@ -2,9 +2,23 @@
 	<section id="create">
 		<form action="<?= URL ?>patient/createSave" method="post">
 
-		<p>Name</p><input type="text" placeholder="darius" name="name" class="inputtext">
-		<p>Specie</p><input type="text" placeholder="wolf" name="specie" class="inputtext">
-		<p>Status</p><input type="text" placeholder="broken leg" name="status" class="inputtext">
+		<p>Client</p>
+			<select name="client_name">
+				<?php foreach ($clients as $client){ ?>
+				<option value="<?= $client['client_id'] ?>"><?= $client['client_firstname'] ?> <?= $client['client_lastname'] ?></option>		
+				<?php } ?>	
+			</select>
+
+		<p>patient name</p><input type="text" placeholder="darius" name="patient_name" class="inputtext">
+
+		<p>patient Specie</p> 
+			<select name="specie_name">
+				<?php foreach ($species as $specie){ ?>
+				<option value="<?= $specie['species_id'] ?>"><?= $specie['species_description'] ?></option>		
+				<?php } ?>	
+			</select>
+
+		<p> patient status</p><input type="text" placeholder="broken leg" name="patient_status" class="inputtext">
 		
 		
 			<input type="submit" value="submit" id="submitcreate">

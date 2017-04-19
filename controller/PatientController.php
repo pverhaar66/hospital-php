@@ -1,16 +1,22 @@
 <?php
 
+require(ROOT . "model/SpecieModel.php");
+require(ROOT . "model/ClientModel.php");
 require(ROOT . "model/PatientModel.php");
 
 function index()
 {
 	render("Patient/Index", 
-		array("patient" => getAllPatients()));
+		array("patient" => getAllPatients()
+	));
 }
 
 function create()
 {
-	render("Patient/createPatient");
+	render("Patient/createPatient", 
+		array("species" => getAllSpecies(),
+			  "clients" => getALlClients()
+			  ));
 	
 }
 
@@ -29,7 +35,7 @@ function createSave()
 
 function deletePatient($id)
 {
-	if (!delete($id)) {
+	if (!deletePatients($id)) {
 		 		header("Location:" . URL . "error/index");
 	 		exit();
  	}

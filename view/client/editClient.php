@@ -3,10 +3,10 @@
 		<form action="<?= URL ?>client/editSave" method="post">
 		
 		
-		<p>Name</p><input type="text" value="<?= $client['client_name'] ?>" name="name" class="inputtext">
-		<p>phone</p><input type="text" value="<?= $client['client_phone'] ?>" name="phone" class="inputtext">
-		<p>email</p><input type="text" value="<?= $client['client_email'] ?>" name="email" class="inputtext">
-		<input type="hidden" value="<?= $client['client_id'] ?>" name="id">
+		<p>First name</p><input type="text" value="<?= $client['client_firstname'] ?>" name="client_firstname" class="inputtext">
+		<p>Last name</p><input type="text" value="<?= $client['client_lastname'] ?>" name="client_lastname" class="inputtext">
+
+		<input type="hidden" value="<?= $client['client_id'] ?>" name="client_id">
 
 
 		
