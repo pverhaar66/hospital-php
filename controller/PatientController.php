@@ -7,7 +7,7 @@ require(ROOT . "model/PatientModel.php");
 function index()
 {
 	render("Patient/Index", 
-		array("patient" => getAllPatients()
+		array("patients" => getAllPatients()
 	));
 }
 
@@ -23,7 +23,8 @@ function create()
 function createSave()
 {
 
- 	if (!createPatient()) {
+
+if (!createPatient()) {
 
 	 		header("Location:" . URL . "error/index");
 	 		exit();
@@ -47,12 +48,13 @@ function deletePatient($id)
 function readPatient($id)
 {
 	render("patient/readPatient" ,array('patient' => getPatient($id)));
-
 }
 
 function editPatient($id)
 {
-	render("patient/editPatient", array('patient' => getPatient($id)));
+	render("patient/editPatient", array('patient' => getPatient($id),
+											"species" => getAllSpecies(),
+			  								"clients" => getALlClients()));
 }
 
 function editSave() {
