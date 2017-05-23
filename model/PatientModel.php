@@ -41,6 +41,7 @@ function createPatient() {
 
 	$patient_name = isset($_POST["patient_name"]) ? $_POST['patient_name'] : null;
 	$species_id = isset($_POST["specie_id"]) ? $_POST['specie_id'] : null;
+	$patient_gender = isset($_POST["patient_gender"]) ? $_POST['patient_gender'] : null;
 	$client_id = isset($_POST["client_id"]) ? $_POST['client_id'] : null;
 	$patient_status = isset($_POST["patient_status"])? $_POST['patient_status'] : null;
 
@@ -51,11 +52,12 @@ function createPatient() {
 
 	$db = openDatabaseConnection();
 
-	$sql = "INSERT INTO patients(patient_name, species_id, client_id, patient_status) VALUES(:patient_name, :species_id, :client_id, :patient_status)";
+	$sql = "INSERT INTO patients(patient_name, species_id, patient_gender, client_id, patient_status) VALUES(:patient_name, :species_id, :patient_gender, :client_id, :patient_status)";
 
 	$query = $db -> prepare($sql);
 	$query -> execute(array(':patient_name' => $patient_name,
 						 	':species_id' => $species_id,
+						 	':patient_gender' => $patient_gender,
 						 	':client_id' => $client_id,
 						  	':patient_status' => $patient_status));
 

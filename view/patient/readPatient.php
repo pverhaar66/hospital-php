@@ -2,9 +2,12 @@
 	<main>
 		<section id="create">
 			<p> Name : <?= $patient['patient_name'];?></p>
+			
 			<p> client : <?= $patient['client_firstname'] ?> <?= $patient['client_lastname'] ?></p>
+
 		 	<p> Specie : <?= $patient['species_description'];?></p>
-		 	<p> Specie : <?= $patient['patient_gender'];?></p>
+
+		 	<p> Gender : <?= $patient['patient_gender'];?></p>
 		 
 			<p> Status : <?= $patient['patient_status'];?></p>
 			

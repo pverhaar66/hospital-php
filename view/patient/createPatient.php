@@ -15,8 +15,14 @@
 			<p>patient Specie</p> 
 				<select name="specie_id">
 					<?php foreach ($species as $specie){ ?>
-						<option value="<?= $specie['male'] ?>"><?= $specie['species_description'] ?></option>		
+						<option value="<?= $specie['species_id'] ?>"><?= $specie['species_description'] ?></option>		
 					<?php } ?>	
+				</select>
+
+			<p> Gender</p> 
+				<select name="patient_gender">
+					<option value="Female">Female</option>
+					<option value="Male">Male</option>
 				</select>
 
 			<p> patient status</p><input type="text" placeholder="broken leg" name="patient_status" class="inputtext">

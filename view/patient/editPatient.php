@@ -22,6 +22,12 @@
 					<?php } ?>	
 				</select>
 
+			<p> Gender</p> 
+				<select name="patient_gender">
+					<option value="Female">Female</option>
+					<option value="Male">Male</option>
+				</select>	
+
 
 			<p>patient Status</p>	<input type="text" maxlength="30" value="<?= $patient['patient_status'] ?>" class="inputtext" name="patient_status" >
 
