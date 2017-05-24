@@ -3,7 +3,8 @@
 function getAllPatients() {
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT * FROM patients 
+	$sql = 
+	"SELECT * FROM patients
 	INNER JOIN clients on patients.client_id = clients.client_id
 	INNER JOIN species on patients.species_id = species.species_id";
 	$query = $db->prepare($sql);
