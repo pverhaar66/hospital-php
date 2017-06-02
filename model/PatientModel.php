@@ -1,12 +1,11 @@
 <?php
-
-function getAllPatients() {
+function getAllPatients($sort, $table) {
 	$db = openDatabaseConnection();
 
-	$sql = 
-	"SELECT * FROM patients
+	$sql =  "SELECT * FROM patients
 	INNER JOIN clients on patients.client_id = clients.client_id
-	INNER JOIN species on patients.species_id = species.species_id";
+	INNER JOIN species on patients.species_id = species.species_id
+	ORDER BY patients.". $table ." ". $sort;
 	$query = $db->prepare($sql);
 	$query->execute();
 

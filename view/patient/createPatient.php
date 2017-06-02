@@ -23,6 +23,8 @@
 				<select name="patient_gender">
 					<option value="Female">Female</option>
 					<option value="Male">Male</option>
+					<option value="hermafrodiet">hermafrodiet</option>
+
 				</select>
 
 			<p> patient status</p><input type="text" placeholder="broken leg" name="patient_status" class="inputtext">

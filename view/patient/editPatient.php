@@ -36,6 +36,7 @@
 				<select name="patient_gender">
 					<option value="Female">Female</option>
 					<option value="Male">Male</option>
+					<option value="hermafrodiet">hermafrodiet</option>
 				</select>
 					
 

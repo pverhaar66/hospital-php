@@ -3,11 +3,11 @@
 		<table>
 
 				<tr>
-					<td class="top">Patient</td>
-					<td class="top">Species</td>
-					<td class="top">gender</td>
-					<td class="top" colspan="2">Client</td>
-					<td class="top">Status</td>		
+					<td class="top"> <a href="<?= URL ?>patient/index?sort=<?= $sort ?>&table=patients"> Patient </a></td>
+					<td class="top"> <a href="<?= URL ?>patient/index?sort=<?= $sort ?>&table=species"> species </a></td>
+					<td class="top"> <a href="<?= URL ?>patient/index?sort=<?= $sort ?>&table=gender"> gender </a></td>
+					<td class="top" colspan="2"> <a href="<?= URL ?>patient/index?sort=<?= $sort ?>&table=client"> Client </a></td>
+					<td class="top"> Status </td>		
 					<td class="top" colspan="3">options</td>
 				</tr>
 

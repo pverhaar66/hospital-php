@@ -6,8 +6,42 @@ require(ROOT . "model/PatientModel.php");
 
 function index()
 {
+if (isset($_GET["table"])) {
+
+	if ($_GET["table"] == "patients") {
+		$table = "patient_name";
+
+		}else if($_GET["table"] == "species"){
+			$table = "species_id";
+
+		}else if($_GET["table"] == "gender"){
+			$table = "patient_gender";
+			
+		}else if($_GET["table"] == "client"){
+			$table = "client_id";
+	}
+
+}else{
+	$table = "patient_name";
+}
+
+
+
+if (isset($_GET["sort"])) {
+
+if ($_GET["sort"] == "ASC") {
+		$sort = "ASC";
+	}else{
+		$sort = "DESC";
+	}
+}else{
+	$sort = "ASC";
+}
+
 	render("Patient/Index", 
-		array("patients" => getAllPatients()
+		array("patients" => getAllPatients($sort, $table), 
+			"sort" => $sort == "ASC" ? "DESC" : "ASC"
+
 	));
 }
 
